@@ -1,30 +1,28 @@
 import React, { Component } from 'react'
 import goku from '../img/sangoku.jpg'
 
-export default class Goku extends Component {
-    state = {
-        hits: 0,
-    }
-    handleClick = () => {
-        this.setState(prevState => {
-            return { hits: prevState.hits + 1}
-        })
-    }
+class Goku extends Component {
+
   render() {
+    const {hits, addOne} = this.props;
+
     return (
       <div className="col-6">
           <img src={goku} alt="goku" className="imgDbz"/>
           <br/>
-          <button onClick={this.handleClick} className="mt-3 btn btn-danger">{this.props.name} Frapper</button>
+          <br/>
+
+          <button className="btn btn-danger" onClick={addOne}>Frapper</button>
           <table className='table table-striped mt-3'>
               <thead>
                 <tr>
                     <th scope="col">Coup</th>
+                    <th scope="col">Vie</th>
                 </tr>
               </thead>
               <tbody>
                     <tr>
-                        <td>{this.state.hits}</td>
+                        <td>{hits}</td>
                     </tr>
               </tbody>
           </table>
@@ -32,3 +30,6 @@ export default class Goku extends Component {
     )
   }
 }
+
+
+export default Goku
